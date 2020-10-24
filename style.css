@@ -3,12 +3,7 @@ header {
 	background-color: pink;
 }
 
-/* Anchor Tag Color Set */
-#highScore:link {
-	color: brown;
-	background-color: transparent;
-	text-decoration: none;
-}
+/* HighScore Anchor Tag Color Set */
 #highScore:visited {
 	color: brown;
 	background-color: transparent;
@@ -31,7 +26,7 @@ body {
 }
 
 .jumbotron {
-	height: 500px;
+	height: 450px;
 	border-radius: 5px;
 	border-width: 1px;
 	box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;

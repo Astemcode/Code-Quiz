@@ -1,3 +1,48 @@
+header {
+	margin-bottom: 100px;
+	background-color: pink;
+}
+
+/* Anchor Tag Color Set */
+#highScore:link {
+	color: brown;
+	background-color: transparent;
+	text-decoration: none;
+}
+#highScore:visited {
+	color: brown;
+	background-color: transparent;
+	text-decoration: none;
+}
+#highScore:hover {
+	color: red;
+	background-color: transparent;
+	text-decoration: underline;
+}
+#highScore:active {
+	color: bisque;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+/* Page Background */
+body {
+	background-image: url(./Assets/galaxy.jpg);
+}
+
+.jumbotron {
+	height: 500px;
+	border-radius: 5px;
+	border-width: 1px;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+	font-size: 18px;
+	margin: 0 auto;
+	max-width: 1000px;
+	background-color: lavenderblush;
+	text-align: center;
+	color: brown;
+}
+
 .hide {
-    display: none;
+	display: none;
 }

@@ -40,7 +40,7 @@ var timer;
 // Start timer and activate Quiz 
 function start() {
 
-    remainingTime = 75;
+    remainingTime = 30;
     document.getElementById("remainingTime").innerHTML = remainingTime;
 
     timer = setInterval(function() {
@@ -140,71 +140,3 @@ resetBtn.addEventListener("click", function () {
 homeBtn.addEventListener("click", function () {
     history.back();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var topMarks = JSON.parse(localStorage.getItem("topMarks")) || [];
-
-// submitButton.addEventListener("click", function(event){
-//   event.stopPropagation();
-//   console.log("click");
-  
-//   var initials = inputLine.value;
-//   var finalScore = {initials, secondsLeft};
-//   console.log("Final Score: " + finalScore);
-//   console.log(initials + " your score is: " + secondsLeft); 
-
-
-
-
-//   // Send to localStorage
-
-//   topMarks.push(finalScore);
-//   localStorage.setItem("topMarks", JSON.stringify(topMarks));
-
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function saveScore() {
-//     localStorage.setItem("highscore", score);
-//     localStorage.setItem("topMark",  document.getElementById('name').value);
-//     grabResults();
-// }
-
-
-// function grabResults() {
-//     var quizResults = `
-//     <h2>` + localStorage.getItem("topMark") + `'s highscore is:</h2>
-//     <h1>` + localStorage.getItem("highscore") + `</h1><br> 
-    
-//     <button onclick="clearScore()">Start Over</button><button onclick="resetGame()">Another Shot!</button>
-    
-//     `;
-
-//     document.getElementById("quizBody").innerHTML = quizResults;
-// }

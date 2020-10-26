@@ -40,7 +40,7 @@ var timer;
 // Start timer and activate Quiz 
 function start() {
 
-    remainingTime = 20;
+    remainingTime = 75;
     document.getElementById("remainingTime").innerHTML = remainingTime;
 
     timer = setInterval(function() {
@@ -95,7 +95,6 @@ function next() {
     document.getElementById("quizSection").innerHTML = quizZone;
 }
 
-
 // Completion of Game 
 function gameOver() {
     clearInterval(timer);
@@ -110,3 +109,102 @@ function gameOver() {
 
     document.getElementById("quizSection").innerHTML = quizResults;
 }
+
+
+// Recording of Score 
+  
+var homeBtn = document.querySelector("button.homeBtn"),
+    resetBtn = document.querySelector("button.resetBtn"),
+
+    topMarks = JSON.parse(localStorage.getItem("topMarks") || "[]"),
+    scoreArchive = document.getElementById("top-scores");
+
+    // sort scores from high to low
+    topMarks.sort(function (a,b){
+        return b.score - a.score
+    })
+
+    // display the scores
+    for (var s = 0; s < topMarks.length; s++) {
+        var listScores = document.createElement("li")
+        listScores.textContent = topMarks[s].name + " - " + topMarks[s].score
+        scoreArchive.appendChild(listScores)
+    }
+
+
+// click handlers for restart and clearing scoreboard
+resetBtn.addEventListener("click", function () {
+    localStorage.clear();
+    history.back()
+});
+homeBtn.addEventListener("click", function () {
+    history.back();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var topMarks = JSON.parse(localStorage.getItem("topMarks")) || [];
+
+// submitButton.addEventListener("click", function(event){
+//   event.stopPropagation();
+//   console.log("click");
+  
+//   var initials = inputLine.value;
+//   var finalScore = {initials, secondsLeft};
+//   console.log("Final Score: " + finalScore);
+//   console.log(initials + " your score is: " + secondsLeft); 
+
+
+
+
+//   // Send to localStorage
+
+//   topMarks.push(finalScore);
+//   localStorage.setItem("topMarks", JSON.stringify(topMarks));
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function saveScore() {
+//     localStorage.setItem("highscore", score);
+//     localStorage.setItem("topMark",  document.getElementById('name').value);
+//     grabResults();
+// }
+
+
+// function grabResults() {
+//     var quizResults = `
+//     <h2>` + localStorage.getItem("topMark") + `'s highscore is:</h2>
+//     <h1>` + localStorage.getItem("highscore") + `</h1><br> 
+    
+//     <button onclick="clearScore()">Start Over</button><button onclick="resetGame()">Another Shot!</button>
+    
+//     `;
+
+//     document.getElementById("quizBody").innerHTML = quizResults;
+// }

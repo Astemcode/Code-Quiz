@@ -38,6 +38,22 @@ body {
 	color: brown;
 }
 
+button {
+    border: none;
+    background-color: #f83f74;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 12px 8px 12px;
+    font-size: 30px;
+    font-family: 'Lora', serif;
+    margin: 9px;
+}
+
+button:hover {
+    transition-duration: 0.2s;
+    background-color: #f35181;
+}
+
 .hide {
 	display: none;
 }

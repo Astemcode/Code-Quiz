@@ -1,7 +1,46 @@
+var quiz = [
+    {question:"What does DOM stand for in JavaScript?",
+    options:["Dissolved Organic Matter", "Department of Management", "Document Object Model", "Dirty Old Man"],
+    answer: "Document Object Model"
+},
 
+{question:"Which framework is designed for creating dynamic websites?",
+    options:["Static Frameworks", "Responsive Frameworks", "Constant Frameworks", "Contemporary Frameworks"],
+    answer: "Responsive Frameworks"
+},
+
+{question:"What is the index position of the third character in a string?",
+    options:["Index [5]", "Index [1]", "Index [2]", "Index [3]"],
+    answer: "Index [2]"
+},
+
+{question:"True or False you can declare a function inside of a function?",
+    options:["False", "True", "Man I Dont Know", "Both answers are correct"],
+    answer: "True"
+},
+
+{question:"Which of the following is NOT a variable?",
+    options:["String", "Number", "Media", "Boolean"],
+    answer: "Media"
+},
+
+{question:"Which is NOT a JavaScript library?",
+    options:["Mootools", "jQuery", "React", "Atom"],
+    answer: "Atom"
+}
+
+] 
+
+var score = 0;
+var currentQuestion = -1;
+var remainingTime = 0;
+var timer;
+
+
+// Start timer and activate Quiz 
 function start() {
 
-    remainingTime = 70;
+    remainingTime = 20;
     document.getElementById("remainingTime").innerHTML = remainingTime;
 
     timer = setInterval(function() {
@@ -10,46 +49,64 @@ function start() {
         //proceed to end the game function when timer is below 0 at any time
         if (remainingTime <= 0) {
             clearInterval(timer);
-            endGame(); 
+            gameOver(); 
         }
     }, 1000);
 
     next();
 }
 
+// Answer Choice Time Adjustment
+function correct () {
+    remainingTime += 1;
+    score +=15
+    next()
+}
+function incorrect () {
+    remainingTime -= 8;
+    next()
+}
+
+// Answer Choice Credit 
 
 
+// Question Loop
+function next() {
+    currentQuestion++;
 
-
-
-
-
-
-
-
-
-
-
-
-var quizQuestion = document.getElementById("quizSection");
-var possibleAnswers = document.getElementById("quizSection");
-var answer;
-
-
-
-function createQuestions() {
-    questionOrder++;
-    answer = quiz[questionOrder].answer
-
-    quizQuestion.textContent = quiz[questionOrder].question;
-    possibleAnswers.innerHTML = "";
-
-    var options = quiz[questionOrder].options;
-
-    for (var q = 0; q < options.length; q++) {
-        var nextOption = document.createElement("button");
-
-        nextOption.textContent = options[q]
-        answerBtn = possibleAnswers.appendChild(nextOption).setAttribute("class", "p-3 m-1 btn btn-light btn-block");
+    if (currentQuestion > quiz.length - 1) {
+        endGame();
+        return;
     }
+
+    var quizZone = "<h2>" + quiz[currentQuestion].question + "</h2>"
+
+    for (var buttonLoop = 0; buttonLoop < quiz[currentQuestion].options.length; buttonLoop++) {
+        var buttonCode = "<button onclick=\"[ANS]\">[CHOICE]</button>"; 
+        buttonCode = buttonCode.replace("[CHOICE]", quiz[currentQuestion].options[buttonLoop]);
+        if (quiz[currentQuestion].options[buttonLoop] == quiz[currentQuestion].answer) {
+            buttonCode = buttonCode.replace("[ANS]", "correct()");
+        } else {
+            buttonCode = buttonCode.replace("[ANS]", "incorrect()");
+        }
+        quizZone += buttonCode
+    }
+
+    document.getElementById("quizSection").innerHTML = quizZone;
+}
+
+
+// Completion of Game 
+function gameOver() {
+    clearInterval(timer);
+
+    var quizResults = `
+    <h2>Aww Your Time is Up!!!</h2>
+    <h5>You've made it to the end patron, hope you're not feeling to overwhelmed by the quiz.<h5>
+    <h3>Nice score of ` + score +  ` /100!</h3>
+    <h3>Hmm with  a score of ` + score  +  ` there's always room for improvement!</h3>
+    <input type="text" id="name" placeholder="Patron's Alias"> 
+    <button onclick="setScore()">Submit</button>`;
+
+    document.getElementById("quizSection").innerHTML = quizResults;
 }

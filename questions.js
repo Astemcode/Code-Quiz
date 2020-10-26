@@ -1,3 +1,6 @@
+// jQuery
+$.getScript('/path/to/imported/script.js', function()
+{
 var quiz = [
     {question:"What does DOM stand for in JavaScript?",
     options:["Dissolved Organic Matter", "Department of Management", "Document Object Model", "Dirty Old Man"],
@@ -30,4 +33,6 @@ var quiz = [
 }
 
 ] 
+
+});
 

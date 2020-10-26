@@ -67,3 +67,8 @@ h2 {
     color: brown;
 
 }
+
+/* Highscore Page CSS */
+#scoreSection {
+    background-color: thistle;
+}

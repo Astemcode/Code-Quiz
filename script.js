@@ -46,7 +46,8 @@ function start() {
     timer = setInterval(function() {
         remainingTime--;
         document.getElementById("remainingTime").innerHTML = remainingTime;
-        //proceed to end the game function when timer is below 0 at any time
+
+        // Game ends
         if (remainingTime <= 0) {
             clearInterval(timer);
             gameOver(); 
@@ -66,9 +67,6 @@ function incorrect () {
     remainingTime -= 8;
     next()
 }
-
-// Answer Choice Credit 
-
 
 // Question Loop
 function next() {

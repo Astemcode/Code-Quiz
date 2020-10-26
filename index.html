@@ -12,6 +12,9 @@
     <!-- Google Font Link -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
 
+    <!-- jQuery Link  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <!-- Local CSS Link  -->
     <link rel="stylesheet" href="style.css">
 
@@ -23,12 +26,13 @@
             <div class="col-9">
                 <a href="./highScores.html" id="highScore">The Highscores</a>
             </div>
-            <div class="col-3" id="timer">
-                <a>Time: 70</a>
+            <div class="col-3" id="countDown">
+                <h6>Time: <span id="remainingTime">0</span></h6>
             </div>
         </div>
     </header>
-    <div class="jumbotron">
+    <div id="mainQuiz">
+    <div id="quizSection" class="jumbotron">
         <br>
         <h1 class="display-4">Coding Quiz</h1>
         <br>
@@ -41,9 +45,21 @@
         <br>
         <br>
         <div class="text-center">
-            <button onclick="start()">Get Started!</button>
+            <button id="quizStart" onclick="start()">Get Started!</button>
         </div>
     </div>
+    </div>
+
+    <!-- Quiz  -->
+    <div class="quiz">
+
+    </div>
+
+    <!-- Score Submission Screen  -->
+    <div class="submitScore">
+
+    </div>
+
 
     <!-- Bootstrap JS Link -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -55,6 +71,9 @@
 
     <!-- Local Bootstrap Link  -->
     <script src="script.js"></script>
+
+    <!-- jQuery Tags  -->
+    <script></script>
 
 </body>
 

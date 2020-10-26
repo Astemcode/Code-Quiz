@@ -20,6 +20,11 @@
 	text-decoration: underline;
 }
 
+h6 {
+    color: brown;
+
+}
+
 /* Page Background */
 body {
 	background-image: url(./Assets/galaxy.jpg);

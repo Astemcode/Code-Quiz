@@ -1,7 +1,7 @@
 # Code-Quiz
  ### Are You Ready to begin the Quiz?!?!?
 
-> Welcome patron to the galaxies quiz of the code. Are you ready to enter the coding realm?
+> Welcome patron to the galaxies' quiz of the code. Are you ready to enter the coding realm?
 >Knowledge is what you claim to have, your knowledge is what we will be testing!
 
 [Code Quiz](https://astemcode.github.io/Code-Quiz/ "Quiz Realm")
@@ -10,18 +10,17 @@
 
 
 <!-- Webpage Screenshots -->
-![Code Quiz]()
+![Code Quiz ](assets/QuizCode1.png)
 
-![Code Quiz ]()
+![Code Quiz ](assets/QuizCode2.png)
 
-![Code Quiz ]()
+![Code Quiz ](assets/QuizCode3.png)
 
-![Code Quiz ]()
+![Code Quiz ](assets/QuizCode4.png)
 
-![Code Quiz ]()
+![Code Quiz ](assets/QuizCode5.png)
 
-![Code Quiz ]()
+![Code Quiz ](assets/QuizCode6.png)
 
-![Code Quiz ]()
+![Code Quiz ](assets/QuizCode7.png)
 
-![Code Quiz ]()

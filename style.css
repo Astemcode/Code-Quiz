@@ -4,8 +4,11 @@
 }
 
 /* HighScore Anchor Tag Color Set */
-
 #highScore {
+    color: brown;
+}
+
+#highScore:visited {
 	color: brown;
 	background-color: transparent;
 	text-decoration: none;

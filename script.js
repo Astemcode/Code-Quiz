@@ -32,15 +32,14 @@ var quiz = [
 ] 
 
 var score = 0;
-var currentQuestion = -1;
-var remainingTime = 0;
+var currentQuestion = 0;
+var remainingTime = 30;
 var timer;
 
 
 // Start timer and activate Quiz 
 function start() {
 
-    remainingTime = 30;
     document.getElementById("remainingTime").innerHTML = remainingTime;
 
     timer = setInterval(function() {
@@ -54,7 +53,7 @@ function start() {
         }
     }, 1000);
 
-    next();
+    renderQuestion();
 }
 
 // Answer Choice Time Adjustment
@@ -69,16 +68,8 @@ function incorrect () {
 }
 
 // Question Loop
-function next() {
-    currentQuestion++;
-
-    if (currentQuestion > quiz.length - 1) {
-        endGame();
-        return;
-    }
-
+function renderQuestion(){
     var quizZone = "<h2>" + quiz[currentQuestion].question + "</h2>"
-
     for (var buttonLoop = 0; buttonLoop < quiz[currentQuestion].options.length; buttonLoop++) {
         var buttonCode = "<button onclick=\"[ANS]\">[CHOICE]</button>"; 
         buttonCode = buttonCode.replace("[CHOICE]", quiz[currentQuestion].options[buttonLoop]);
@@ -89,8 +80,18 @@ function next() {
         }
         quizZone += buttonCode
     }
-
     document.getElementById("quizSection").innerHTML = quizZone;
+}
+
+function next() {
+    currentQuestion++;
+    console.log(currentQuestion)
+    if (currentQuestion === quiz.length) {
+        console.log(currentQuestion)
+        gameOver();
+    } else {
+        renderQuestion()
+    }
 }
 
 // Completion of Game 
@@ -103,38 +104,51 @@ function gameOver() {
     <h3>Nice score of ` + score +  ` /100!</h3>
     <h3>Hmm with  a score of ` + score  +  ` there's always room for improvement!</h3>
     <input type="text" id="name" placeholder="Patron's Alias"> 
-    <button onclick="setScore()">Submit</button>`;
+    <button onclick="topMarks()">Submit</button>`;
 
     document.getElementById("quizSection").innerHTML = quizResults;
 }
 
 
 // Recording of Score 
-  
-var homeBtn = document.querySelector("button.homeBtn"),
-    resetBtn = document.querySelector("button.resetBtn"),
+function topMarks(){
 
-    topMarks = JSON.parse(localStorage.getItem("topMarks") || "[]"),
+    var highScore  = JSON.parse(localStorage.getItem("highScore") || "[]"),
     scoreArchive = document.getElementById("top-scores");
+    name = document.getElementById("name").value.trim();
+    console.log(name)
+
+    var newScore = {
+        score: score,
+        name: name,
+    }
+    highScore.push(newScore)
+    
 
     // sort scores from high to low
-    topMarks.sort(function (a,b){
+    highScore.sort(function (a,b){
         return b.score - a.score
     })
 
+    localStorage.setItem("highScore",JSON.stringify(highScore))
+
     // display the scores
-    for (var s = 0; s < topMarks.length; s++) {
+    for (var s = 0; s < highScore.length; s++) {
         var listScores = document.createElement("li")
-        listScores.textContent = topMarks[s].name + " - " + topMarks[s].score
+        listScores.textContent = highScore[s].name + " - " + highScore[s].score
         scoreArchive.appendChild(listScores)
     }
+}
 
+    var homeBtn = document.querySelector("button.homeBtn"),
+        resetBtn = document.querySelector("button.resetBtn")
 
 // click handlers for restart and clearing scoreboard
-resetBtn.addEventListener("click", function () {
-    localStorage.clear();
-    history.back()
-});
-homeBtn.addEventListener("click", function () {
-    history.back();
-});
+// resetBtn.addEventListener("click", function () {
+//     localStorage.clear();
+//     history.back()
+// });
+// homeBtn.addEventListener("click", function () {
+//     history.back();
+// });
+
